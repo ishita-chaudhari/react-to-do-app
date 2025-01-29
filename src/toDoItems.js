@@ -1,18 +1,21 @@
-import React from "react";
 
-const TodoItem = ({ todo, toggleTodo }) => {
+import React from 'react';
+
+function TodoItems({ tasks, toggleComplete }) {
   return (
-    <div className="flex items-center space-x-2">
-      <input
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => toggleTodo(todo.id)}
-      />
-      <span className={todo.completed ? "line-through text-gray-500" : ""}>
-        {todo.text}
-      </span>
-    </div>
+    <ul>
+      {tasks.map((task, index) => (
+        <li key={index} className={task.completed ? 'completed' : ''}>
+          <input
+            type="checkbox"
+            checked={task.completed}
+            onChange={() => toggleComplete(index)}
+          />
+          {task.text}
+        </li>
+      ))}
+    </ul>
   );
-};
+}
 
-export default toDoItems;  
+export default TodoItems;
