@@ -1,49 +1,86 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #333;
+}
+
+.container {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 50px auto;
+  background: white;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.input-section {
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
+input {
   width: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   margin-right: 10px;
 }
 
 button {
-  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
   cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #218838;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  margin-top: 20px;
 }
 
 li {
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  justify-content: space-between;
+  background: #fff;
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-li.completed {
-  text-decoration: line-through;
-}
-
-input[type="checkbox"] {
+li input[type="checkbox"] {
   margin-right: 10px;
 }
 
-.clear-all {
-  margin-top: 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+li span {
+  flex-grow: 1;
+  text-align: left;
+}
+
+li button {
+  background-color: #dc3545;
+}
+
+li button:hover {
+  background-color: #c82333;
+}
+
+.clear-btn {
+  margin-top: 10px;
+  background-color: #ffc107;
+  color: black;
+}
+
+.clear-btn:hover {
+  background-color: #e0a800;
 }

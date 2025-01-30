@@ -1,24 +1,26 @@
-
-import React, { useState } from 'react';
-import './App.css';
-import TodoItems from './TodoItems';
+import "./App.css";
+import React, { useState } from "react";
+import TodoItems from "./components/TodoItems";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const addTask = () => {
-    if (input.trim()) {
+    if (input.trim() !== "") {
       setTasks([...tasks, { text: input, completed: false }]);
-      setInput('');
+      setInput("");
     }
   };
 
-  const toggleComplete = (index) => {
-    const newTasks = tasks.map((task, i) =>
-      i === index ? { ...task, completed: !task.completed } : task
-    );
+  const toggleTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].completed = !newTasks[index].completed;
     setTasks(newTasks);
+  };
+
+  const deleteTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
   };
 
   const clearAll = () => {
@@ -26,23 +28,17 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>React To-Do App</h1>
-      <div className="input-section">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter task"
-        />
-        <button onClick={addTask}>Add Task</button>
-      </div>
-
-      <TodoItems tasks={tasks} toggleComplete={toggleComplete} />
-
-      <button onClick={clearAll} className="clear-all">
-        Clear All Tasks
-      </button>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Todo App</h1>
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter a task"
+      />
+      <button onClick={addTask}>Add</button>
+      <TodoItems tasks={tasks} toggleTask={toggleTask} deleteTask={deleteTask} />
+      {tasks.length > 0 && <button onClick={clearAll}>Clear All</button>}
     </div>
   );
 }
